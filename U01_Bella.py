@@ -1,7 +1,7 @@
 import random
 
 choices = ["rock", "paper", "scissors"]
-choices1 = ["rock", "paper", "scissors","gun","AK-47"]
+
 def rps (player,computer):
     if player==computer:
         return "draw"
@@ -22,26 +22,11 @@ print("we are playing rock paper scissors Bo3")
 for round in range (1,4):
 
 
-    player=input("choose:")
-    if player=="gun" or player=="AK-47":
-        print("Nice one :)")
-    if player not in choices1: ##nie je to while loop lebo mi to prislo vtipné
-        player= input("Invalid choice, choose again:")
-        if player not in choices1:
-            player = input("Invalid choice, choose again:")
-            if player not in choices1:
-                player = input("INVALID CHOICE, choose again:")
-                if player not in choices1:
-                    player = input("BRO ITS INVALID, CHOOSE AGAIN:")
-                    if player not in choices1:
-                        player = input("PLEASE, CHOOSE AGAIN:")
-                        if player not in choices1:
-                            player = input("This is painfull, choose again:")
-                            if player not in choices1:
-                                player = input("Every time you do this it hurts more and more,")
-                                if player not in choices1:
-                                    player = input("You found an easter egg, gun, was it worth it?")
-
+    while True:
+        player = input("Choose (rock/paper/scissors/): ").lower()
+        if player in choices:
+            break
+        print("Invalid choice, please choose again.")
 
 
     computer= random.choice(choices)
