@@ -52,4 +52,3 @@ def quadratic_roots(a,b,c):
     return root1,root2
 print(quadratic_roots(2,3,4))
 
-def distance(x1,y1,x2,y2):
