@@ -7,9 +7,7 @@ def rps (player,computer):
         return "draw"
     elif (player == "rock" and computer == "scissors") or \
             (player == "paper" and computer == "rock") or \
-            (player == "scissors" and computer == "paper") or \
-            (player=="AK-47")or \
-            (player=="gun"):
+            (player == "scissors" and computer == "paper"):
         return "player won"
     else:
         return "computer won"
