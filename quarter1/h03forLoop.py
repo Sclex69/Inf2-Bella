@@ -1,4 +1,4 @@
-for char in "Python":
+pfor char in "Python":
     print(char)
 
 for x in range (5):
