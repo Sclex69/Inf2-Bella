@@ -1,3 +1,5 @@
+from dataclasses import replace
+
 student= {"name": "Alex","grade": "A","age": "18"}
 print(student["grade"])
 print(student["age"])
@@ -54,3 +56,40 @@ spocitanie(species_two)
 spocitanie(species_three)
 spocitanie(species_four)
 
+def complementary(y):
+    species = ""
+    for x in y:
+        if x == "A":
+            species=species + "T"
+        if x == "T":
+            species=species + "A"
+        if x == "C":
+            species=species + "G"
+        if x == "G":
+            species=species + "C"
+    print(species)
+complementary(species_one)
+complementary(species_two)
+
+def RNA(y):
+    species = ""
+    for x in y:
+        if x == "A":
+            species=species + "U"
+        if x == "T":
+            species=species + "A"
+        if x == "C":
+            species=species + "G"
+        if x == "G":
+            species=species + "C"
+    print(species)
+RNA(species_one)
+RNA(species_two)
+
+def zisti_RNA(x):
+    if "U" in x:
+        print("RNA")
+    else:
+        print("DNA")
+zisti_RNA(species_one)
+zisti_RNA(species_two)
