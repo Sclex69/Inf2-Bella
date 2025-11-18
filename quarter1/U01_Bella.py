@@ -1,18 +1,28 @@
-import random  # To allow computer to make random choices
+import random
 
 # List of valid options
 choices = ["rock", "paper", "scissors"]
 
-# Function to determine winner of a single round
 def rps(player, computer):
+    """Determine the winner of a Rock-Paper-Scissors round.
+
+        player (str): The player's choice ("rock", "paper", or "scissors").
+        computer (str): The computer's choice ("rock", "paper", or "scissors").
+
+    Returns:
+        str: "player won" if the player wins,
+             "computer won" if the computer wins,
+             "draw" if both choose the same.
+    """
     if player == computer:
-        return "draw"  # Same choice -> draw
+        return "draw"
     elif (player == "rock" and computer == "scissors") or \
          (player == "paper" and computer == "rock") or \
          (player == "scissors" and computer == "paper"):
-        return "player won"  # Player beats computer
+        return "player won"
     else:
-        return "computer won"  # Computer beats player
+        return "computer won"
+
 
 # Initialize scores
 pcscore = 0

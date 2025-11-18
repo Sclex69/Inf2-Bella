@@ -2,7 +2,7 @@
 print("What year would you like to know? Calculating the date of Easter Sunday for any year between 1900 and 2099 ")
 N = int(input())  # Get input and convert to integer
 
-# Computus algorithm to find Easter
+# algorithm to find Easter
 a = N % 19
 b = N // 100
 c = N % 100

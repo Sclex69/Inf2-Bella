@@ -99,7 +99,6 @@ def main():
         print("3. Login")
         print("4. Delete user")
         print("5. Admin reset password")
-        print("6. Exit")
 
         choice = input("Choose option: ")
 
@@ -108,9 +107,6 @@ def main():
         elif choice == "3": login()
         elif choice == "4": delete_user()
         elif choice == "5": admin_reset()
-        elif choice == "6":
-            print("Goodbye!")
-            break
         else:
             print("Invalid option.")
 
