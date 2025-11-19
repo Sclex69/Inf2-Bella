@@ -205,3 +205,4 @@ print(zoradene_abecedne)
 zoradene_dlzka = sorted(slova, key=len)
 print("Zoradené podľa dĺžky:")
 print(zoradene_dlzka)
+#chybajuce ulohy su v H05_paths_2.py
