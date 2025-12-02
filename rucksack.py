@@ -21,6 +21,7 @@ for d in denominations:
     count = int(remaining // d)
     if count > 0:
         result[d] = count
+
         remaining = round(remaining - count * d, 2)
 
 # Output
@@ -31,4 +32,3 @@ for d, c in result.items():
         print(f"{c} × {int(d)}€ coin")
     else:  # cents
         print(f"{c} × {int(d * 100)}¢ coin")
-print (result.items())
