@@ -1,28 +1,25 @@
-from os import replace
-c=0
-f = open("c.txt")
 
-f=f.readlines()
+K=12
+def best_k_digits(s, k=K):
+    stack = []
+    n = len(s)
+    for i, ch in enumerate(s):
+        # while last picked is smaller than current and we can still fill k digits later
+        while stack and stack[-1] < ch and len(stack) + (n - i) > k:
+            stack.pop()
+        stack.append(ch)
+    # keep only first k digits (stack may be longer)
+    result = ''.join(stack)[:k]
 
-for i in f:
-    i = i.rstrip()
-    v=max(i)
-    g=i.index(v)
-    print(len (i))
-    if g== (len(i)-1):
-        v2=v
-        i = i.replace(v, "0", 1)
-        v=max(i)
-    else:
-        i = i[g:]
-        i=i.replace(v,"0",1)
+    return result
 
-        v2 = max(i)
+total = 0
+with open("c.txt") as fh:
+    for line_no, line in enumerate(fh, start=1):
+        s = line.strip()
+        if not s:
+            continue
+        best = best_k_digits(s, K)
+        total += int(best)
 
-
-
-    r = v + v2
-    print(r)
-    c=int(r)+c
-    print(c)
-print(c)
+print(total)
