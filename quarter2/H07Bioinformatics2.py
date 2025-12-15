@@ -1,93 +1,109 @@
-input_file = './Human_FMR1_Protein_UniProt.fasta'
-
-# Open our input file for reading
-f = open(input_file)
-
-# Before we start reading the file,
-# set up an empty dict to hold our mappings
-# between gene ids and their sequence
-parsed_seqs = {}
-
-# Set up variables to keep track of our
-# current sequence id (a string),
-# and our current sequence (as a list of smaller sequences)
-# (we glue these smaller sequences together later on)
-
-curr_seq_id = None
-curr_seq = []
-
-for line in f:
-
-    # remove newline characters ("\n")
-    line = line.strip()
-
-    if line.startswith(">"):
-        # We only execute this code IF we're in
-        # an identifier line!
-
-        # Even though the next if statement appears
-        # early in the code, it is the final step in the
-        # process of parsing an entry.
-
-        # curr_seq_id starts as None, so if it is not None,
-        # (i.e. it already holds an identifier)
-        # AND we are in an identifier line,
-        # then we must have finished reading an entry
-        # and be just starting a new one. We should glue together
-        # all the sequences for the current entry (with ''.join(curr_seq))
-        # and save it to our dictionary, keyed based on the current
-        # identifier
-        if curr_seq_id is not None:
-            parsed_seqs[curr_seq_id] = ''.join(curr_seq)
-
-        # Regardless of whether we just saved an entry,
-        # We're in a label line that starts a new entry,
-        # so we should set the current sequence id to whatever it
-        # says on the line, except for the '>' symbol
-        curr_seq_id = line[1:]
-
-        # empty out the current sequence, since we're starting
-        # a new entry
-        curr_seq = []
-
-        # If we started a new entry, skip the stuff we'd normally
-        # do to process sequence data and go on to the next line
-        continue
-
-    # If we got here, it means we are NOT in an identifier
-    # line, and instead we've got sequence! We should add
-    # the current sequence to the
-    curr_seq.append(line)
-
-# Join the sequences for the final entry and add them to the dict
-parsed_seqs[curr_seq_id] = ''.join(curr_seq)
-
-# Print out the final result!
-print(parsed_seqs)
-
-def spocitanie(y):
-    """Count nucleotide frequencies in a DNA sequence.
+def read_fasta(input_file):
+    """
+    Read a FASTA file and separate sequences by identifiers.
 
     Args:
-        y (str): DNA sequence consisting of the letters A, T, C, and G.
+        input_file (str): Path to FASTA file.
 
     Returns:
-        None: Prints a dictionary showing each nucleotide count.
+        dict: {sequence_id: sequence}
     """
-    species = {}
-    for x in y:  # Count each nucleotide
-        species[x] = species.get(x, 0) + 1
-    return species
+    parsed_seqs = {}
+    curr_seq_id = None
+    curr_seq = []
 
-f=spocitanie(parsed_seqs[curr_seq_id])
-print(f)
-if len(f)> 6:
-    print("PROTEIN")
-else:
-    if "T" in f:
-        print("DNA")
-    else:
-        print("RNA")
+    with open(input_file) as f:
+        for line in f:
+            line = line.strip()
+
+            if line.startswith(">"):
+                if curr_seq_id is not None:
+                    parsed_seqs[curr_seq_id] = ''.join(curr_seq)
+                curr_seq_id = line[1:]
+                curr_seq = []
+                continue
+
+            curr_seq.append(line)
+
+    if curr_seq_id is not None:
+        parsed_seqs[curr_seq_id] = ''.join(curr_seq)
+
+    return parsed_seqs
 
 
-print(len(f))
+def spocitanie(sequence):
+    """
+    Count occurrences of each character in a sequence.
+    """
+    counts = {}
+    for char in sequence:
+        counts[char] = counts.get(char, 0) + 1
+    return counts
+
+
+def detect_fasta_type(char_dict):
+    """
+    Detect whether a sequence is DNA, RNA, or PROTEIN.
+    """
+    if len(char_dict) > 6:
+        return "PROTEIN"
+    if "T" in char_dict:
+        return "DNA"
+    return "RNA"
+
+
+def dinucleotide_count(sequence):
+    """
+    Count dinucleotide frequencies in a DNA sequence.
+    """
+    dinucs = {}
+    for i in range(len(sequence) - 1):
+        pair = sequence[i:i+2]
+        dinucs[pair] = dinucs.get(pair, 0) + 1
+    return dinucs
+
+
+def cg_observed_expected(sequence):
+    """
+    Calculate observed/expected CpG ratio.
+    """
+    mono = spocitanie(sequence)
+    di = dinucleotide_count(sequence)
+
+    c = mono.get("C", 0)
+    g = mono.get("G", 0)
+    cg = di.get("CG", 0)
+    length = len(sequence)
+
+    expected = (c * g) / length if length > 0 else 0
+    if expected == 0:
+        return 0
+
+    return cg / expected
+
+
+# ---------- MAIN ----------
+
+input_files = [
+    "Human_FMR1_Protein_UniProt.fasta",
+    "Human_X_Chromosome_FMR_Region_NCBI.fasta",
+    "sequences.fasta"
+]
+
+for file in input_files:
+    print("\nProcessing file:", file)
+    sequences = read_fasta(file)
+
+    for seq_id, seq in sequences.items():
+        counts = spocitanie(seq)
+        seq_type = detect_fasta_type(counts)
+
+        print("\nSequence ID:", seq_id)
+        print("Type:", seq_type)
+        print("Unique characters:", len(counts))
+
+        # Dinucleotide analysis ONLY for DNA
+        if seq_type == "DNA":
+            dinucs = dinucleotide_count(seq)
+            print("CG dinucleotide count:", dinucs.get("CG", 0))
+            print("CpG observed/expected:", cg_observed_expected(seq))
