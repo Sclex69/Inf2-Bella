@@ -16,8 +16,8 @@ def read_fasta(input_file):
         for line in f:
             line = line.strip()
 
-            if line.startswith(">"):
-                if curr_seq_id is not None:
+            if line.startswith(">"): #fasta header
+                if curr_seq_id is not None: #If a previous sequence exists: Save it into the dictionary ,Join all sequence lines into one string
                     parsed_seqs[curr_seq_id] = ''.join(curr_seq)
                 curr_seq_id = line[1:]
                 curr_seq = []

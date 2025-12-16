@@ -32,7 +32,7 @@ def crop_image(image, start_row, end_row, start_col, end_col):
     return image[start_row:end_row, start_col:end_col]
 
 
-# ---------- IMAGE PART ----------
+#IMAGE PART ----------
 
 # Load image
 image = io.imread("13901.tif")
