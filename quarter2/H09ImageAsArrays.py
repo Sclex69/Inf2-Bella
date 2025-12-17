@@ -5,7 +5,7 @@ import skimage.morphology
 from skimage import io
 
 single_dot=np.zeros((20,20))
-single_dot[9][9]=1
+single_dot[10][10]=1
 
 plt.imshow(single_dot, cmap = 'gray')
 plt.show()
@@ -37,10 +37,11 @@ def crop_image(image, start_row, end_row, start_col, end_col):
 # Load image
 image = io.imread("13901.tif")
 
-# Crop image (example indices)
+# Crop image
 cropped_image = crop_image(image, 100, 300, 100, 300)
 plt.imshow(cropped_image, cmap='gray')
 plt.show()
+
 # Add number 5 to array
 cropped_image_plus_5 = cropped_image + 5
 

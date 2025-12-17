@@ -1,6 +1,5 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from scipy.stats import false_discovery_control
 from skimage import io, filters, morphology
 
 
@@ -102,7 +101,7 @@ my_gauss = apply_filter(img, gaussian)
 my_median = apply_filter(img, median)
 
 
-# Create a 2×3 grid of plots for visualization
+# Create a grid of plots for visualization
 fig, axs = plt.subplots(4, 3, figsize=(9, 6))
 
 axs[0,0].imshow(single_dot, cmap='gray')
