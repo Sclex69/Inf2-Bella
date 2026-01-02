@@ -2,37 +2,49 @@ import math
 
 def add(a, b):
     return a + b
+add2=lambda a,b: a+b
+
 def subtract(a, b):
     return a - b
+subtract2=lambda a,b: a-b
 def multiply(a, b):
     return a * b
+multiply2=lambda a,b: a*b
 def divide(a, b):
     return a / b
+divide2=lambda a,b: a/b
 def floor_divide(a, b):
     return a // b
+floor_divide2=lambda a,b: a/b
 def modulus(a, b):
     return a % b
+modulus2=lambda a,b: a%b
 def power(a, b):
     return a ** b
-
+power2=lambda a,b: a**b
 # Average of two numbers
 def avarage(a, b):
     return add(a, b) / 2
+avarage2=lambda a,b: a*b
 
 # Rectangle calculations
 def area_rectangle(length, width):
     return multiply(length, width)
+area_rectangle2=lambda length, width: length*width
 
 def perimeter_rectangle(length, width):
     return 2 * (length + width)
+perimeter_rectangle2=lambda length, width: 2*(length+width)
 
 # Triangle area
 def area_triangle(base, height):
     return multiply(base, height) / 2
+area_triangle2=lambda base, height: (multiply2(base,height))/2
 
 # Pythagoras theorem: returns hypotenuse
 def pythagoras(a, b):
     return math.sqrt(power(a, 2) + power(b, 2))
+pythagoras2=lambda a, b: math.sqrt(power2(a, 2) + power2(b, 2))
 
 # Quadratic roots: returns two solutions
 def quadratic_roots(a, b, c):
@@ -40,6 +52,7 @@ def quadratic_roots(a, b, c):
     root1 = (-b + discriminant) / (2 * a)
     root2 = (-b - discriminant) / (2 * a)
     return root1, root2
+quadratic_roots2=lambda a, b, c: 
 
 
 # Exercise 4.1: Distance between two points
@@ -81,4 +94,6 @@ def factorial(n):
     for i in range(1, n + 1):
         result *= i  # Multiply result by current number
     return result
-
+print(add(2,2))
+print(add2(2,2))
+print(power2(2,3))
