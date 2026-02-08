@@ -52,7 +52,7 @@ def quadratic_roots(a, b, c):
     root1 = (-b + discriminant) / (2 * a)
     root2 = (-b - discriminant) / (2 * a)
     return root1, root2
-quadratic_roots2=lambda a, b, c: 
+quadratic_roots2=lambda a, b, c:
 
 
 # Exercise 4.1: Distance between two points

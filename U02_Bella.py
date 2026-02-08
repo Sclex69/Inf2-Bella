@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from skimage import io, filters, morphology
+from skimage import io
 
 
 
@@ -82,7 +82,7 @@ def thresholding(img, threshold):
     numpy.ndarray
         Binary image.
     """
-    return (img > threshold).astype(np.uint8)
+    return (img > threshold)
 
 def apply_filter(img,filter_fn):
     """
@@ -106,7 +106,7 @@ def apply_filter(img,filter_fn):
     h, w = img.shape
     out = np.zeros_like(img)
 
-    # avoid borders
+
     for i in range(1, h-1):
         for j in range(1, w-1):
             window = img[i-1:i+2, j-1:j+2].flatten()
@@ -120,8 +120,7 @@ def apply_filter(img,filter_fn):
 
 # Loading image and applying filters
 img=io.imread("Sahur2.webp",as_gray=True)
-sk_gauss = filters.gaussian(img, sigma=1)
-sk_median = filters.median(img, morphology.footprint_rectangle((3, 3)))
+
 
 cropped_img = crop(img, 40, 60, 50, 250)
 thresh_img = thresholding(img, 0.5)
