@@ -5,7 +5,7 @@ import math
 # Vytvorenie okna
 root = tk.Tk()
 root.title("Mestá")
-canvas = tk.Canvas(root, width=500, height=500, bg='white')
+canvas = tk.Canvas(root, width=500, height=500, bg='black')
 canvas.pack()
 x2 = rd.randint(150, 230)
 y2 = rd.randint(150, 230)
