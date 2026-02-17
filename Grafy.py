@@ -33,7 +33,16 @@ plt.title('Podiel 5 najčastejších národností')
 plt.savefig('Pie_Bella.png', bbox_inches='tight')
 plt.show()
 
+
 # --- 2. HISTOGRAM (Distribution of Finish Times) ---
+plt.figure(figsize=(10, 6))
+sns.histplot(df_clean['Čas_hodiny'], bins=20, kde=True, color='skyblue')
+plt.title('Distribúcia cieľových časov (v hodinách)')
+plt.xlabel('Čas (hodiny)')
+plt.ylabel('Počet bežcov')
+plt.savefig('Histogram_Bella.png', bbox_inches='tight')
+plt.show()
+# --- 2.1 HISTOGRAM (Szekely)
 plt.figure(figsize=(10, 6))
 sns.histplot(df_clean['Čas_hodiny'], bins=20, kde=True, color='skyblue')
 plt.title('Distribúcia cieľových časov (v hodinách)')
@@ -48,8 +57,9 @@ plt.xlabel('Čas (hodiny)')
 plt.ylabel('Počet bežcov')
 plt.legend()
 plt.savefig('histogram_highlighted_Bella.png')
-plt.savefig('Histogram_Bella.png', bbox_inches='tight')
+
 plt.show()
+
 
 
 # --- 3. BAR CHART (Runners per Category) ---
