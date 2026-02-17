@@ -13,7 +13,7 @@ def on_click_l(event):
     global c
     point = [round(event.x), round(event.y)]
     first_point.append(point)
-    # Nakreslíme krúžok
+    # Nakreslíme kruh
     radius = 3
     canvas.create_oval(event.x - radius, event.y - radius,
                        event.x + radius, event.y + radius,

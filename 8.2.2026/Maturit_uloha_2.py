@@ -13,7 +13,7 @@ def house(x,y):
 def moon(x,y):
     canvas.create_oval(x, y, x+80, y+80, fill='yellow', outline='')
 
-    # Second circle (to create the crescent by covering part of the first)
+
     canvas.create_oval(x+30, y, x+110, y+80, fill='white', outline='')
 g=0
 for x in range(20,600,150):

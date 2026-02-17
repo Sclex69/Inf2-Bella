@@ -16,8 +16,10 @@ global g
 # Funkcia na výpočet vzdialenosti
 def distance(x1, y1, x2, y2):
     return round(math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2))
+
 def clear_lines():
     canvas.delete('lines')
+
 def longest_line():
     l={}
     for i, j in positions:
@@ -31,6 +33,7 @@ def longest_line():
     canvas.create_line(hix, hiy, i, j,tags="lines")
     number = round(math.sqrt((i - hix) ** 2 + (i - hiy) ** 2))
     canvas.create_text(i+5, j+5, text=number, tags="lines")
+
 def shortest_line():
     l={}
     for i, j in positions:
@@ -103,8 +106,6 @@ for i, j in positions2:
 
 button_frame = tk.Frame(root)
 button_frame.pack()
-
-
 
 
 btn_clear = tk.Button(button_frame, text="Vymazať úsečky", command=clear_lines)
