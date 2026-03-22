@@ -1,0 +1,26 @@
+CITIES
+D1: (460, 431)
+D2: (296, 204)
+D3: (284, 226)
+D4: (340, 345)
+D5: (338, 235)
+D6: (325, 151)
+D7: (274, 360)
+D8: (216, 101)
+D9: (427, 59)
+D10: (102, 207)
+
+lines
+Snake Line: (460, 431) to (296, 204) | Length: 280
+Snake Line: (296, 204) to (284, 226) | Length: 25
+Snake Line: (284, 226) to (340, 345) | Length: 132
+Snake Line: (340, 345) to (338, 235) | Length: 110
+Snake Line: (338, 235) to (325, 151) | Length: 85
+Snake Line: (325, 151) to (274, 360) | Length: 215
+Snake Line: (274, 360) to (216, 101) | Length: 265
+Snake Line: (216, 101) to (427, 59) | Length: 215
+Snake Line: (427, 59) to (102, 207) | Length: 357
+Extra Line: (284, 226) to (274, 360) | Length: 134
+Extra Line: (340, 345) to (274, 360) | Length: 68
+Extra Line: (325, 151) to (427, 59) | Length: 137
+Extra Line: (274, 360) to (460, 431) | Length: 199

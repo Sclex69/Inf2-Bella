@@ -90,3 +90,27 @@ plt.xticks(rotation=45, ha='right')
 plt.savefig('Comparison_Bella.png', bbox_inches='tight')
 plt.tight_layout()
 plt.show()
+
+# --- 5. KDE PLOT (Final Distribution by Category) ---
+plt.figure(figsize=(12, 6))
+
+sns.kdeplot(
+    data=df_clean,
+    x='Čas_hodiny',
+    hue='Kategórie',
+    fill=False,
+    common_norm=False,
+    palette='viridis',
+    alpha=0.3
+)
+
+plt.axvline(person_time, color='red', linestyle='--', linewidth=2, label=f'{person_name}')
+
+
+plt.legend(title='Kategórie', loc='upper left')
+
+plt.title(f'Distribúcia časov: {person_name} vs Ostatní')
+plt.xlabel('Čas (hodiny)')
+plt.ylabel('Hustota (Density)')
+
+plt.show()
