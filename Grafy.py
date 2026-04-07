@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Load data (using the uploaded file name)
-df = pd.read_csv("filtrovanie_maraton.csv")
+df = pd.read_csv("quarter3/filtrovanie_maraton.csv")
 
 # --- DATA CLEANING ---
 def time_to_hours(t_str):
