@@ -12,7 +12,7 @@ df = pd.DataFrame(data, columns=['kocka1', 'kocka2', 'kocka3'])
 df['sum'] = df['kocka1'] + df['kocka2'] + df['kocka3']
 df['sucin'] = df['kocka1'] * df['kocka2']
 
-# This provides mean, min, max, etc., for all columns
+# mean, min, max, for all columns
 print("--- DataFrame Statistics ---")
 print(df.describe())
 
